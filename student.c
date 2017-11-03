@@ -14,7 +14,7 @@ LinkNode* linklist_node_creat()
 	student->gender = male;
 	student->ID = NULL;
 	student->QQ = NULL;
-	student->grade_math = 0;
+	student->grade_Math = 0;
 	student->grade_English = 0;
 	student->link = NULL;
 
@@ -48,7 +48,7 @@ void linklist_node_delete(LinkNode* p)
 		p->QQ = NULL;
 	}
 
-	p->grade_math = 0;
+	p->grade_Math = 0;
 	p->grade_English = 0;
 	p->link = NULL;
 }

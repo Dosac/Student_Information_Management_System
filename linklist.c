@@ -1,20 +1,5 @@
 #include "linklist.h"
 
-LinkNode* linklist_node_creat(LinkNode node)
-{
-	LinkNode* p = (LinkNode*)malloc(sizeof(LinkNode));
-	if(!p)
-	{
-		printf("Error in \"LinkNode* linklist_node_creat(LinkNode node)\",\n");
-		printf("Failed to allicate memory!\n");
-		exit(-1);
-	}
-
-	*p = node;
-	p->link = NULL;
-	return p;
-}
-
 LinkList linklist_creat(int n)
 {
 	LinkList list;
@@ -79,23 +64,25 @@ LinkNode* linklist_getnode(LinkList list, int n)
 
 void position_warning(int n, int n_upperlimit, char* function_name)
 {
+	printf("Warning: in ");
+	printf("\"%s\"", function_name);
 	if(n < 0)
 	{
-		printf("Warning: in \"void linklist_setnode(LinkList list, int n, LinkNode node)\", n is negtive!\n");
-		printf("Nothing has been done!\n");
-		return;
+		printf(", n is negtive!\n");
 	}
-	if(n >= list.length)
+	if(n >= n_upperlimit)
 	{
-		printf("Warning: in \"void linklist_setnode(LinkList list, int n, LinkNode node)\", n over list's length!\n");
-		printf("Nothing has been done!\n");
-		return;
+		printf(", n over list's length!\n");
 	}
+	printf("Nothing has been done!\n");
 }
 
 void linklist_setnode(LinkList list, int n, LinkNode node)
 {
-	
+	if(n < 0 || n >= list.length)
+	{
+		return position_warning(n, list.length, "void linklist_setnode(LinkList list, int n, LinkNode node)");
+	}
 
 	LinkNode* p = linklist_getnode(list, n);
 	*p = node;
@@ -108,7 +95,8 @@ void linklist_push_back(LinkList list, LinkNode node)
 	{
 		p = p->link;
 	}
-	p->link = linklist_node_creat(node);
+	p->link = linklist_node_creat();
+	*(p->link) = node;
 
 	list.length++;
 }
@@ -130,22 +118,15 @@ LinkNode linklist_pop_back(LinkList list)
 
 void linklist_insert(LinkList list, int n, LinkNode node)
 {
-	if(n < 0)
+	if(n < 0 || n >= list.length)
 	{
-		printf("Warning: in \"void linklist_insert(LinkList list, int n, LinkNode node)\", n is negtive!\n");
-		printf("Nothing has been done!\n");
-		return;
-	}
-	if(n >= list.length)
-	{
-		printf("Warning: in \"void linklist_insert(LinkList list, int n, LinkNode node)\", n over list's length!\n");
-		printf("Nothing has been done!\n");
-		return;
+		return position_warning(n, list.length, "void linklist_insert(LinkList list, int n, LinkNode node)");
 	}
 
 	LinkNode* p = linklist_getnode(list, n-1);
 	LinkNode* p_next = p->link;
-	LinkNode* newNode = linklist_node_creat(node);
+	LinkNode* newNode = linklist_node_creat();
+	*newNode = node;
 	p->link = newNode;
 	newNode->link = p_next;
 
@@ -154,17 +135,9 @@ void linklist_insert(LinkList list, int n, LinkNode node)
 
 void linklist_erase(LinkList list, int n)
 {
-	if(n < 0)
+	if(n < 0 || n >= list.length)
 	{
-		printf("Warning: in \"void linklist_erase(LinkList list, int n)\", n is negtive!\n");
-		printf("Nothing has been done!\n");
-		return;
-	}
-	if(n >= list.length)
-	{
-		printf("Warning: in \"void linklist_erase(LinkList list, int n)\", n over list's length!\n");
-		printf("Nothing has been done!\n");
-		return;
+		return position_warning(n, list.length, "void linklist_erase(LinkList list, int n)");
 	}
 
 	LinkNode* p = linklist_getnode(list, n-1);

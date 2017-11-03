@@ -2,19 +2,19 @@
 
 typedef enum Gender
 {
-	male = false,
-	female = true
+	male = 0,
+	female = 1
 }Gender;
 
 typedef struct Student
 {
-	char* name = NULL;
-	Gender gender = male;
-	char* ID = NULL;
-	char* QQ = NULL;
-	float grade_math = 0;
-	float grade_English = 0;
-	Student* link = NULL;
+	char* name;
+	Gender gender;
+	char* ID;
+	char* QQ;
+	float grade_Math;
+	float grade_English;
+	struct Student* link;
 }Student;
 
 typedef Student LinkNode;

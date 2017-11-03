@@ -5,12 +5,11 @@
 
 typedef struct LinkList
 {
-	int length = 0;
-	LinkNode* head = NULL;
+	int length;
+	LinkNode* head;
 }LinkList;
 
 LinkNode* linklist_node_creat(); // finished
-LinkNode* linklist_node_creat(LinkNode node); // finished
 void linklist_node_delete(LinkNode* p); // finished
 
 LinkList linklist_creat(int n); // finished
@@ -24,3 +23,5 @@ LinkNode linklist_pop_back(LinkList list); // finished
 
 void linklist_insert(LinkList list, int n, LinkNode node); // finished
 void linklist_erase(LinkList list, int n); // finished
+
+void position_warning(int n, int n_upperlimit, char* function_name);
