@@ -1,27 +1,12 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include "linklist.h"
 
-typedef struct Student
-{
-	char* name;
-	bool gender;
-	int id;
-	int qq;
-	float grade_math;
-	float grade_English;
-	Student* link;
-}Student;
+void studentlist_print(LinkList student_list);
+void studentlist_modify_name(LinkList list, int n, char* str);
+void studentlist_modify_gender(LinkList list, int n, Gender gender);
+void studentlist_modify_ID(LinkList list, int n, char* str);
+void studentlist_modify_QQ(LinkList list, int n, char* str);
+void studentlist_modify_grade_Math(LinkList list, int n, float grade);
+void studentlist_modify_grade_Englist(LinkList list, int n, float grade);
 
-typedef struct StudentList
-{
-	Student* head;
-}StudentList;
-
-Student* studentnode_creat();
-StudentList studentlist_creat(int n);
-void studentlist_erase(StudentList student_list, int n);
-void studentlist_modify(StudentList student_list, int n, int index, void* data);
-void studentlist_append(StudentList student_list, Student student);
-void studentlist_insert(StudentList student_list, int n, Student student);
-void studentlist_clear(StudentList student_list);
-void studentlist_print(StudentList student_list);
+void studentlist_write(LinkList student_list, char* filename);
+LinkList studentlist_read(char* filename);
