@@ -96,6 +96,7 @@ void linklist_push_back(LinkList list, LinkNode node)
 		p = p->link;
 	}
 	p->link = linklist_node_creat();
+	node.link = NULL;
 	*(p->link) = node;
 
 	list.length++;

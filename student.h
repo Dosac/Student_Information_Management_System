@@ -8,10 +8,10 @@ typedef enum Gender
 
 typedef struct Student
 {
-	char* name;
+	char name[20];
 	Gender gender;
-	char* ID;
-	char* QQ;
+	char ID[10];
+	char QQ[15];
 	float grade_Math;
 	float grade_English;
 	struct Student* link;

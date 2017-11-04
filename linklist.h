@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 #include "student.h"
 
@@ -24,4 +25,4 @@ LinkNode linklist_pop_back(LinkList list); // finished
 void linklist_insert(LinkList list, int n, LinkNode node); // finished
 void linklist_erase(LinkList list, int n); // finished
 
-void position_warning(int n, int n_upperlimit, char* function_name);
+void position_warning(int n, int n_upperlimit, char* function_name); // finished
